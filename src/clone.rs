@@ -30,10 +30,5 @@ pub fn get_clone_address(block_number: U64, sigil: U256) -> Address {
     hasher.update(&bytes);
     hasher.finalize(&mut output);
 
-    let mut output_vec = output.to_vec();
-    output_vec.reverse();
-    output_vec.truncate(20);
-    output_vec.reverse();
-
-    Address::from_slice(&output_vec)
+    Address::from_slice(&output[12..])
 }
